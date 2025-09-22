@@ -1,9 +1,19 @@
+import pytest
 
 COMANDOS = ["compra", "venta", "saldo", "reset", "fin"]
 MENSAJE_ERROR = "*ERROR* Entrada inválida"
 
 
+
 def comprobar_importe(valor: str) -> bool:
+     if valor.startswith(".",","):
+        valor = valor[1:]                   
+    
+     
+    return valor.isdigit()
+        
+
+
     """
     Verifica si el importe proporcionado es un número válido.
 
@@ -11,11 +21,13 @@ def comprobar_importe(valor: str) -> bool:
         valor (str): Cadena que representa el importe a verificar.
 
     Returns:
-        bool: True si el valor es un número válido (positivo, negativo o con punto decimal), False en caso contrario.
+            bool: True si el valor es un número válido (positivo, negativo o con punto decimal), False en caso contrario.
     """
 
 
 def comprobar_comando(comando: str) -> bool:
+    
+  
     """
     Verifica si el comando está dentro de la lista de comandos válidos.
 
@@ -25,12 +37,23 @@ def comprobar_comando(comando: str) -> bool:
     Returns:
         bool: True si el comando está en la lista de comandos válidos, False en caso contrario.
     """
+def introcude_numero(msj: str) -> float: 
+  valor = input(msj).strip().replace(",", ".")
 
+
+    
 
 def mostrar_mensaje_error():
-    """
+
+   while not comprobar_float(valor):
+        print("*ERROR* Numero invalodo! ")
+        valor = input(msj).strip().replace(",", ".")
+        
+    
+
+"""
     Muestra el mensaje de error por entrada inválida.
-    """
+ """
 
 
 def procesar_compra(saldo: float, importe: float) -> float:
@@ -71,6 +94,9 @@ def mostrar_saldo(saldo: float, cont_compras: int, cont_ventas: int):
 
 
 def resetear_saldo(saldo: float, cont_compras: int, cont_ventas: int) -> tuple[float, int, int]:
+    print():
+    return 0,0,0
+
     """
     Resetea el saldo y las operaciones realizadas, mostrando antes el saldo anterior.
 
